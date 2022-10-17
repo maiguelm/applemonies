@@ -1,0 +1,26 @@
+@import  '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
+
+html{
+	font-family: Roboto;
+}
+
+header {
+    background-color: rgb(187, 187, 0);
+    max-height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.linkNav{
+	padding: 10px;
+}
+
+.btnCarrito{
+    padding: 30px;
+}
