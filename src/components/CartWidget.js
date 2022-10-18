@@ -1,24 +1,30 @@
-<<<<<<< HEAD
 import React from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {IconButton,Badge} from "@mui/material/";
+
+
+const badgeStyle={
+    margin: "10px",
+    width:"15px",
+    height:"15px",
+    padding: "10px",
+    color:"#000",
+}
 
 
 const CartWidget = () => {
 	return (
-		<span><ShoppingCartIcon fontSize="large" color="primary" href="#" className="btnCarrito"/></span>
+        <IconButton sx={badgeStyle}>
+            <Badge anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+                }}
+                badgeContent={1} 
+                color="secondary">
+                <ShoppingCartIcon />
+            </Badge>
+        </IconButton>
 	)
 }
 
-=======
-import React from "react";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-
-const CartWidget = () => {
-	return (
-		<span><ShoppingCartIcon fontSize="large" color="primary" href="#" className="btnCarrito"/></span>
-	)
-}
-
->>>>>>> 3895d08b2a16e4fa6e10f5b7fa15eb4e6507101c
 export default CartWidget
