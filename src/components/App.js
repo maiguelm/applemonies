@@ -1,19 +1,21 @@
 import React from "react";
 import Header from "./Header"
 import Footer from "./Footer"
-import ItemListContainer from "./ItemListContainer";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./Main";
+
 
 
 function App() {
 
-	return(
-	<> 
-		<Header />
-		<ItemListContainer 
-			nombre= {prompt("Ingrese su nombre")}
-		/>
-		<Footer />
-	</>
+	return (
+		<>
+			<BrowserRouter>
+				<Header />
+				<Main />
+				<Footer />
+			</BrowserRouter>
+		</>
 	)
 }
 
