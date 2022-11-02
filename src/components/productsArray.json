@@ -1,0 +1,85 @@
+[
+	{
+		"id" : 1,
+		"imagen": "croissant.jpg",
+		"nombre": "Croissant",
+		"precio": 250,
+		"categoria": "Viennoiseries",
+		"descripcion": "Un verdadero Croissant de manteca, con un proceso de elaboracion de tres días",
+		"cantidad": 1
+	},
+	{
+		"id" : 2,
+		"imagen": "pain.jpg",
+		"nombre": "Pain Aux Chocolat",
+		"precio": 280,
+		"categoria": "Viennoiseries",
+		"descripcion": "Un delicioso Pain Aux Chocolat, una especialidad verdaderamente hojaldrada",
+		"cantidad": 1
+	},
+	{
+		"id" : 3,
+		"imagen": "chausson.jpg",
+		"nombre": "Chausson",
+		"precio": 350,
+		"categoria": "Viennoiseries",
+		"descripcion": "Exisita Vionnoserie rellena de una compoa de manzanas y canela",
+		"cantidad": 0
+	},
+	{
+		"id" : 4,
+		"imagen": "balcarce.jpg",
+		"nombre": "Postre Balcarce",
+		"precio": 1250,
+		"categoria": "Postres",
+		"descripcion": "Clásico postre elaborado con merengue, crema de leche,dulce de leche, piononos y nueces. Extra-sweet!",
+		"cantidad": 1
+	},
+	{
+		"id" : 5,
+		"imagen": "alfajor.jpg",
+		"nombre": "Alfajor",
+		"precio": 300,
+		"categoria": "Masitas",
+		"descripcion": "Otro clásico: el alfajor marplatense, relleno de dulce de leche y bañado en chocolate cobretura semi-amargo",
+		"cantidad": 1
+	},
+	{
+		"id" : 6,
+		"imagen": "cajatortitas.jpg",
+		"nombre": "Caja de Tortitas",
+		"precio": 1000,
+		"categoria": "Postres",
+		"descripcion": "Exclusiva Caja de Tortitas, de seis unidades a eleccion! Se puede elegir entre varios sabores!",
+		"cantidad": 1,
+		"sabor": ["lemon pie", "coco", "valeria", "ricota","manzana", "frutilla"]
+	},
+	{
+		"id" : 7,
+		"imagen": "cajatortitas.jpg",
+		"nombre": "Lemon Pie",
+		"precio": 800,
+		"categoria": "Postres",
+		"descripcion": "Nuestro lemon pie, rebosante de sabor a limon!! Nuestra crema de limon es especial, sin manteca ni productos lacteos, por lo que es ideal para intolerantes a la lactosa",
+		"cantidad": 1
+	},
+	{
+		"id" : 8,
+		"imagen": "cajatortitas.jpg",
+		"nombre": "Lemonies",
+		"precio": 500,
+		"categoria": "Masitas",
+		"descripcion": "Nuestros Lemonies! Pequeño bizcochuelo sabor limón, glaseado con más limón y secado naturalmente durante dos días para lograr una concentración de sabores única. Tenes que probarlos!!",
+		"cantidad": 1
+	},
+	{
+		"id" : 9,
+		"imagen": "cajatortitas.jpg",
+		"nombre": "Danesas",
+		"precio": 400,
+		"categoria": "Viennoiseries",
+		"descripcion": "Unica y exclusiva Viennoiseries, que puede esatr rellenea con pasta de avellanas o canela, embebida en almíbar de miel",
+		"cantidad": 1
+	}
+]
+

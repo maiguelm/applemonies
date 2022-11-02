@@ -6,8 +6,9 @@ const Navbar = () => {
 	return (
 		<nav>
 			<NavLink to="./productos" underline="hover" className="linkNav">Productos</NavLink>
-			<NavLink to="./quienesSomos" underline="hover" className="linkNav">Quienes Somos</NavLink>
-			<NavLink to="./galeria" underline="hover" className="linkNav">Galeria</NavLink>
+			<NavLink to="./productos/viennoiseries" underline="hover" className="linkNav">Viennoiseries</NavLink>
+			<NavLink to="./productos/masitas" underline="hover" className="linkNav">Masitas</NavLink>
+			<NavLink to="./productos/postres" underline="hover" className="linkNav">Postres</NavLink>
 			<NavLink to="./contacto" underline="hover" className="linkNav">Contacto</NavLink>
 			<CartWidget />
 		</nav>
