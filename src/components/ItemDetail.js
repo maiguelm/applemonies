@@ -1,27 +1,28 @@
 import React from "react";
-import Item from "./Item";
+import ItemCount from "./ItemCount";
+import Wallpaper from "./img/wallpaper.jpg"
+
+
 
 function ItemDetail({ ...item }) {
-    return (
-        <>
-            <div className='details__main__container'>
-                               <div className='details__side__container'>
-                    <div className='details__text__container'>
-                        <h2 className='details__title'>{item.nombre}</h2>
-                        <p className='details__description'>{item.descripcion}</p>
-                    </div>
-                    <div className='details__price__container'>
-                        <span className='details__price'>${item.precio}</span>
-                    </div>
-                    <div className="details__btn__container">
-                    <button className='details__btn'>COMPRAR</button>
-                    </div>
-                </div>
 
-            </div>
+	const images = require.context("./img", true)
 
-        </>
-    )
+	return (
+		<>
+		<div className="contenedor__detail">
+			<div className="div__detail">
+				<h1>{item.nombre}</h1>
+				<h2>$ {item.precio}</h2>
+				<img src={Wallpaper} className="img__detail"></img>
+				<p>{item.descripcion}</p>
+			</div>
+			<div className="item__count">
+				<ItemCount />
+			</div>
+		</div>
+		</>
+	)
 }
 
 export default ItemDetail

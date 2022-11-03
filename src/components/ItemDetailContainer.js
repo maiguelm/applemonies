@@ -6,23 +6,24 @@ import { getProductsById } from "./Products"
 
 function ItemDetailContainer() {
 
-    const [item, setItems] = useState([])
+    const [item, setItems] = useState({})
 
-    const { elementId } = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-        getProductsById(elementId)
+        getProductsById(id)
             .then(res => {
                 setItems(res)
+				console.log(res)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [elementId])
+    }, [id])
 
     return (
         <>
-            {item.length == 0 ? <p>Cargando...</p> : <ItemDetail item={item} /> }
+            <ItemDetail {...item} />
         </>
 
     )

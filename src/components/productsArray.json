@@ -23,7 +23,7 @@
 		"nombre": "Chausson",
 		"precio": 350,
 		"categoria": "Viennoiseries",
-		"descripcion": "Exisita Vionnoserie rellena de una compoa de manzanas y canela",
+		"descripcion": "Exquisita Vionnoserie rellena de una compoa de manzanas y canela",
 		"cantidad": 0
 	},
 	{
@@ -50,9 +50,7 @@
 		"nombre": "Caja de Tortitas",
 		"precio": 1000,
 		"categoria": "Postres",
-		"descripcion": "Exclusiva Caja de Tortitas, de seis unidades a eleccion! Se puede elegir entre varios sabores!",
-		"cantidad": 1,
-		"sabor": ["lemon pie", "coco", "valeria", "ricota","manzana", "frutilla"]
+		"descripcion": "Exclusiva Caja de Tortitas, de seis unidades a eleccion! Se puede elegir entre varios sabores: lemon pie, coco, valeria, ricota, manzana, frutilla",		"cantidad": 1
 	},
 	{
 		"id" : 7,

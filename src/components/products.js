@@ -11,8 +11,8 @@ export const getProducts = () => {
 	let arrayPetition = new Promise((res) => {
 		setTimeout(() => {
 			res(products)
-			console.log(productsArray)
 		}, 1500)
+
 	})
 	return arrayPetition
 }
@@ -24,15 +24,15 @@ export const getProductByCategory = (categoria) => {
 			res(products.filter((item) => item.categoria == categoria))
 		}, 1500)
 	})
-	console.log(arrayPetition)
 	return arrayPetition
 }
 
-export const getProductsById = (productId) => {
+export const getProductsById = (id) => {
     let arrayPetition = new Promise((res) => {
         setTimeout(() => {
-            res(products.find(item => item.id == productId))
+            res(products.find(item => item.id == id))
         }, 500)
+		console.log(products)
     })
     return arrayPetition
 }
