@@ -2,6 +2,7 @@ import React from "react"
 import Wallpaper from "./img/wallpaper.jpg"
 
 
+
 const Home = () => {
 
     return (
