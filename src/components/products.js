@@ -11,7 +11,7 @@ export const getProducts = () => {
 	let arrayPetition = new Promise((res) => {
 		setTimeout(() => {
 			res(products)
-		}, 1500)
+		}, 500)
 
 	})
 	return arrayPetition
