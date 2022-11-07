@@ -17,7 +17,7 @@ function ItemDetail({ ...item }) {
 					<div className="div__detail">
 						<h1>{item.nombre}</h1>
 						<h2>$ {item.precio}</h2>
-						<img src= {images(`./${item.imagen}`)} className="img__detail"></img>
+						<img src= {item.imagen} className="img__detail"></img>
 						<CardContent>
 							<Typography variant="body2" color="text.secondary">
 								{item.descripcion}
