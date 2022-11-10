@@ -15,6 +15,18 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
+<<<<<<< Updated upstream
+=======
+    color: #1976d2;
+}
+main{
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.icons__footer a{
+    padding: 0 8px;
+>>>>>>> Stashed changes
 }
 
 .linkNav{
@@ -24,3 +36,88 @@ header {
 .btnCarrito{
     padding: 35px;
 }
+<<<<<<< Updated upstream
+=======
+.home {
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.home h1{
+    font-size: 3rem;
+    text-decoration: double;
+    color: #1976d2;
+}
+.home img{
+    max-width: 500px;
+    margin: 0 auto;
+}
+.home p{
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+
+.products__main{
+    width: 100%;
+}
+.card__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 1rem 1.5rem;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.card__div{
+    background-color: rgb(133, 227, 177);
+    border: 1px solid;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+.card__img {
+    margin: 1.5rem 0;
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.card__button{
+    margin-bottom: 0.8rem !important;
+}
+.contenedor__detail{
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.div__detail{
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.img__detail{
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 300px;
+    object-fit: cover;
+}
+
+.item__count{
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: #c6ccd2;
+    border-radius: 3px;
+    max-height: 5rem;
+}
+.counter__buttons{
+    margin: 0 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.counter__buttons p{
+    font-size: 1.5rem;
+    color: #1976d2
+}
+>>>>>>> Stashed changes
