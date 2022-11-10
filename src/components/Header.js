@@ -1,11 +1,14 @@
 import React from "react";
 import Brand from "./Brand";
 import Navbar from "./NavBar";
+import { NavLink } from "react-router-dom"
 
 
 const Header = () => {
 	return <header>
-		<h1>LEMONIES</h1>
+		<NavLink to="/" className="linkNav">
+			<h1>LEMONIES</h1>
+		</NavLink>
 		<Navbar />
 		<Brand />
 	</header>

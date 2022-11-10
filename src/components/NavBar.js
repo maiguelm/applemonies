@@ -1,14 +1,15 @@
 import React from "react";
 import CartWidget from "./CartWidget";
-import { Link } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 	return (
 		<nav>
-			<Link href="#" underline="hover" className="linkNav">Productos</Link>
-			<Link href="#" underline="hover" className="linkNav">Quienes Somos</Link>
-			<Link href="#" underline="hover" className="linkNav">Galeria</Link>
-			<Link href="#" underline="hover" className="linkNav">Contacto</Link>
+			<NavLink to="./productos" underline="hover" className="linkNav">Productos</NavLink>
+			<NavLink to="./productos/Viennoiseries" underline="hover" className="linkNav">Viennoiseries</NavLink>
+			<NavLink to="./productos/Masitas" underline="hover" className="linkNav">Masitas</NavLink>
+			<NavLink to="./productos/Postres" underline="hover" className="linkNav">Postres</NavLink>
+			<NavLink to="./contacto" underline="hover" className="linkNav">Contacto</NavLink>
 			<CartWidget />
 		</nav>
 	)

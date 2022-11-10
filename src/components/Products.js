@@ -21,7 +21,11 @@ export const getProductByCategory = (categoria) => {
 
 	let arrayPetition = new Promise((res) => {
 		setTimeout(() => {
+<<<<<<< HEAD
 			res(products.filter((item) => item.categoria == categoria)) 
+=======
+			res(products.filter((item) => item.categoria == categoria))
+>>>>>>> segunda-preentrega
 		}, 1500)
 	})
 	return arrayPetition

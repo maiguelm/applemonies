@@ -1,19 +1,25 @@
-import React from "react";
+import React, { createContext } from "react";
 import Header from "./Header"
 import Footer from "./Footer"
-import ItemListContainer from "./ItemListContainer";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./Main";
 
+export const contexto = createContext()
+
+const { Provider } = contexto
 
 function App() {
 
-	return(
-	<> 
-		<Header />
-		<ItemListContainer 
-			nombre= {prompt("Ingrese su nombre")}
-		/>
-		<Footer />
-	</>
+	return (
+		<>
+			<Provider>
+				<BrowserRouter>
+					<Header />
+					<Main />
+					<Footer />
+				</BrowserRouter>
+			</Provider>
+		</>
 	)
 }
 

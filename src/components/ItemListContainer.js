@@ -1,54 +1,49 @@
 import React from "react";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import ItemList from "./ItemList";
+import { getProductByCategory, getProducts } from "./Products";
 
 
+const ItemListContainer = ({ greeting }) => {
+  const [items, setItems] = useState([])
 
-function ItemListContainer(prop) {
-  
-  let saludo = prop.nombre
+  const { categoria } = useParams()
 
-	const [open, setOpen] = React.useState(false);
+  useEffect(() => {
 
-	const handleClickOpen = () => {
-	  setOpen(true);
-	};
-  
-	const handleClose = () => {
-	  setOpen(false);
-	  console.log("hiciste click")
-	};
-	return (
-		<div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Dinos tu nombre!!
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Quien sos?</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Introduce tu nombre"
-            type="name"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Aceptar</Button>
-        </DialogActions>
-      </Dialog>
-	  <p>Hola {saludo}</p>
+    if (categoria) {
+
+      getProductByCategory(categoria)
+        .then(res => {
+          setItems(res)
+          console.log(categoria)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+    } else {
+
+      getProducts()
+        .then((respuesta) => {
+          setItems(respuesta)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
+  }, [categoria])
+
+  return (
+    <div>
+      <h2>{greeting}</h2>
+      <div>
+        {items.length === 0 ? <div>Obteniendo productos</div> : <ItemList items={items} />}
+      </div>
     </div>
-
-	)
+  )
 }
 
 export default ItemListContainer
