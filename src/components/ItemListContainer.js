@@ -1,8 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { dataBase } from "./Firebase";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import ItemList from "./ItemList";
-import { getProductByCategory, getProducts } from "./Products";
+import { getProductByCategory, getProducts, products } from "./Products";
+
 
 
 const ItemListContainer = ({ greeting }) => {
@@ -12,26 +15,38 @@ const ItemListContainer = ({ greeting }) => {
 
   useEffect(() => {
 
+    const consultaDB = collection(dataBase, "products")
+    console.log(consultaDB)
+
+
+
     if (categoria) {
 
-      getProductByCategory(categoria)
-        .then(res => {
-          setItems(res)
-          console.log(categoria)
+      const customQuery = query(consultaDB, where("categoria", "==", categoria))
+      const pedidoDB = getDocs(customQuery)
+
+      pedidoDB.then((res) => {
+        const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+        setItems(prods)
+      })
+        .catch((e) => {
+          console.log(e)
         })
-        .catch(err => {
-          console.log(err)
-        })
+
 
     } else {
 
-      getProducts()
-        .then((respuesta) => {
-          setItems(respuesta)
+      const pedidoDB = getDocs(consultaDB)
+      pedidoDB
+        .then((res) => {
+          const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+          setItems(prods)
         })
-        .catch((error) => {
-          console.log(error)
+        .catch((e) => {
+          console.log(e)
         })
+
+
     }
 
   }, [categoria])

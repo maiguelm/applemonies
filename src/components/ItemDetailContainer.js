@@ -1,8 +1,11 @@
+import { doc, getDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { dataBase } from './Firebase'
 import ItemDetail from './ItemDetail'
 import { getProductsById } from "./Products"
+
 
 function ItemDetailContainer() {
 
@@ -11,19 +14,35 @@ function ItemDetailContainer() {
     const { id } = useParams()
 
     useEffect(() => {
-        getProductsById(id)
-            .then(res => {
-                setItems(res)
-				console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
+        const consultaDB = collection(dataBase, "products")
+        const consProd = doc(consultaDB, id)
+
+        const pedidoDB = getDoc(consProd)
+        pedidoDB
+          .then((res) => {
+              console.log("Funciona")
+            setItems(res.data())
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+  
+
+
+        // getProductsById(id)
+        //     .then(res => {
+        //         setItems(res)
+		// 		console.log(res)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
     }, [id])
 
     return (
         <>
-            <ItemDetail {...item} />
+            <ItemDetail producto = {{id, ...item}} />
         </>
 
     )

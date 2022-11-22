@@ -1,24 +1,26 @@
-import React, { createContext } from "react";
+import React, { useState } from "react";
 import Header from "./Header"
 import Footer from "./Footer"
 import { BrowserRouter } from "react-router-dom";
 import Main from "./Main";
+import { app, dataBase } from "./Firebase"
+import ContextProvider from "./ContextProvider"
+import { Carrito } from "./Carrito";
+import CartContext from "./CartContext";
 
-export const contexto = createContext()
-
-const { Provider } = contexto
 
 function App() {
 
 	return (
 		<>
-			<Provider>
-				<BrowserRouter>
-					<Header />
-					<Main />
-					<Footer />
-				</BrowserRouter>
-			</Provider>
+				<ContextProvider>
+					<BrowserRouter>
+						<Header />
+						<Main />
+						<Carrito />
+						<Footer />
+					</BrowserRouter>
+				</ContextProvider>
 		</>
 	)
 }

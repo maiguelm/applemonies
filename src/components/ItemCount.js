@@ -1,8 +1,11 @@
 import { Button } from "@mui/material";
 import { useState } from "react"
+import { useContextProvider } from "./hooks/Hooks";
 
 
-function ItemCount() {
+function ItemCount({handleOnAdd}) {
+	const contextValue = useContextProvider()
+
 	const [count, setCount] = useState(0);
 
 	const handleMore = () => {
@@ -15,6 +18,11 @@ function ItemCount() {
 		}
 	}
 
+	const addCart = () =>{
+		handleOnAdd(count)
+		console.log("Agregar al carrito")
+	}
+
 	return (<>
 		<div>
 			<div className="counter__buttons">
@@ -22,7 +30,7 @@ function ItemCount() {
 			<p>{count}</p>
 			<Button onClick={handleLess}>-</Button>
 			</div>
-			<Button>AGREGAR AL CARRITO</Button>
+			<Button onClick={addCart}>Confirmá la Cantidad!!</Button>
 		</div>
 	</>)
 }

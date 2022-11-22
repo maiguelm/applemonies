@@ -3,6 +3,7 @@ import { Routes , Route } from "react-router-dom"
 import ItemListContainer from "./ItemListContainer"
 import ItemDetailContainer from "./ItemDetailContainer";
 import Home from "./Home";
+import { Carrito } from "./Carrito";
 
 
 const Main = () => {
@@ -18,7 +19,7 @@ const Main = () => {
 
 					<Route path="/item/:id" element={<ItemDetailContainer />}/>
 					
-					{/* <Route path='/carrito' element={<Carrito/>}/> */}
+{/* 					<Route path='/carrito' element={<Carrito/>}/> */}
 	
 					<Route path='*' element={<h1>404</h1>}/>
 	

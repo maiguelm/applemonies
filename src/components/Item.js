@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import { Link } from "react-router-dom";
 import { Card } from "@mui/material";
 
+
 /* const images = require.context("./img", true) */
 
 const Item = ({ id, nombre, imagen, precio, categoria, }) => {
