@@ -1,93 +1,106 @@
 import React, { useContext, useState } from 'react'
-import { dataBase } from './Firebase';
-import { useContextProvider } from './hooks/Hooks';
+import { dataBase } from '../store/Firebase';
+import { useContextProvider } from '../hooks/Hooks';
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Lemonies from "./img/lemonies.jpg"
-import ContextProvider, { contexto } from './ContextProvider';
+import ContextProvider, { contexto, useCarrito } from './ContextProvider';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { Compra } from '../pages/Compra';
+import { Link, NavLink } from 'react-router-dom';
 
 
-export const Carrito = ({producto}) => {
+export const Carrito = () => {
 
   const value = useContext(contexto)
   const [menu, setMenu] = value.menu
   const [id, setId] = useState("")
-  const carrito = value.productos
+  const [carrito, setCarrito] = value.productos
+  const { borrarProducto, calculoPrecio, vaciarCarrito } = useCarrito()
+  const [total] = value.total
+  const [cantidadTotal, setCantidadTotal]= value.cantidadTotal
+  
 
-   const menuFalse = () =>{
+  const menuFalse = () => {
     setMenu(false)
   }
 
   const show = menu ? "carritos show" : "carritos"
-	const show__dos = menu ? "carrito show" : "carrito" 
+  const show__dos = menu ? "carrito show" : "carrito"
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const pedido = {
-      usuario: {
-        name: "Roque",
-        phone: "2223355"
-      },
-      products: [],
-      total: 500,
-      date: serverTimestamp(),
-      nroOrden: Math.random()
-    }
- 
+  const removeProducto = id => {
+    borrarProducto(id)
+    calculoPrecio()
+  }
 
-  const ordersCollection = collection(dataBase, "ordenes")
-  const consulta = addDoc(ordersCollection, pedido)
 
-  consulta 
-    .then((docRef) => {
-      console.log(docRef)
-      setId(docRef.id)
-    })
-    .catch((error) =>{
-      console.log(error)
-    })
-  } 
+  const remProd = id =>{
+		carrito.forEach(item =>{
+			if(item.id === id){
+				item.cantidad === 1 ? item.cantidad = 1: item.cantidad -=1;
+        calculoPrecio(item, item.cantidad)
+        setCantidadTotal(cantidadTotal-1)
+			}
+			setCarrito([...carrito])
+		})
+	}
+	const addProd = id =>{
+		carrito.forEach(item =>{
+			if(item.id === id){
+				item.cantidad +=1;
+        calculoPrecio(item, item.cantidad)
+        setCantidadTotal(cantidadTotal + 1)
+			}
+			setCarrito([...carrito])
+
+		})
+	}
+
 
   return (
     <div className={show}>
       <div className={show__dos}>
-        <div  onClick={menuFalse}>
+        <div onClick={menuFalse}>
           <CloseIcon className='carrito__close'></CloseIcon>
         </div>
         <h2>Este es su carrito </h2>
-        
-        
+
+
         <div className='carrito__center'>
 
-
-{    
-          carrito.length === 0 ? <h2 style={{textAlign: "center", fontSize: "2rem"}}>Carrito Vacio</h2> :
-          carrito.map((producto) =>(<>
-          <div key={producto.id} className='carrito__item'>
-            <img scr={producto.imagen} />             
-            <h3>{producto.nombre}</h3>
-            <p className='precio__producto'>{producto.precio}</p>
-          </div>
-          <div >
-            <ArrowDropUpIcon fontSize="large" className='flechas__cantidad'/>
-            <p className='cantidad__producto'>{producto.cantidad}</p>
-            <ArrowDropDownIcon fontSize="large" className='flechas__cantidad'/>
-          </div>
-          <div className='remove__item'>
-            <DeleteIcon className='delete__item'/>
-          </div></>
-     ))
-} 
+          {
+            carrito.length === 0 ? <h2 style={{ textAlign: "center", fontSize: "2rem" }}>Carrito Vacio</h2> :
+              carrito.map((producto) => (<div key={producto.id}>
+                <div className='carrito__item'>
+                  <img src={producto.imagen} alt={producto.nombre}></img>
+                  <h3>{producto.nombre}</h3>
+                  <p className='precio__producto'>$ {producto.precio}</p>
+                  <div >
+                    <ArrowDropUpIcon fontSize="large" className='flechas__cantidad' onClick={()=> addProd(producto.id)}/>
+                    <p className='cantidad__producto'>{producto.cantidad}</p>
+                    <ArrowDropDownIcon fontSize="large" className='flechas__cantidad' onClick={()=> remProd(producto.id)}/>
+                  </div>
+                  <div className='remove__item'>
+                    <DeleteIcon className='delete__item' onClick={() => removeProducto(producto.id)} />
+                  </div>
+                </div></div>
+              ))
+          }
           <div className='carrito__footer'>
-            <h3>Total: $ 1000</h3>
-            <IconButton color="primary" className='btn'  onClick={handleSubmit}>Comprar</IconButton>
+            {carrito.length === 0 ? <div></div> : <>
+            <h3>Total: $ {total}</h3>
+            <NavLink
+             to="./compra" onClick={menuFalse}> <IconButton color="primary" className='btn'>Comprar</IconButton></NavLink>
+             <IconButton color="primary" className='btn' onClick={vaciarCarrito}>Vaciar Carrito</IconButton>
+             </>
+            }
+            
           </div>
         </div>
       </div>
     </div>
 
-  )};
+  )
+};

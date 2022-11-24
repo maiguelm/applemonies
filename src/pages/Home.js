@@ -1,5 +1,5 @@
 import React from "react"
-import Wallpaper from "./img/wallpaper.jpg"
+import Wallpaper from "../img/wallpaper.jpg"
 
 
 

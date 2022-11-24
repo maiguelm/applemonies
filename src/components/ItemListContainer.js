@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { dataBase } from "./Firebase";
+import { dataBase } from "../store/Firebase";
 import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import ItemList from "./ItemList";
-import { getProductByCategory, getProducts, products } from "./Products";
+import { getProductByCategory, getProducts, products } from "../store/Products";
 
 
 

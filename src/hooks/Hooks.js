@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { contexto } from "../ContextProvider"
+import { contexto } from "../components/ContextProvider"
 
 export const useContextProvider = () =>{
 	return useContext(contexto)

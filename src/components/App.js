@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Header from "./Header"
-import Footer from "./Footer"
+import Header from "../pages/Header"
+import Footer from "../pages/Footer"
 import { BrowserRouter } from "react-router-dom";
-import Main from "./Main";
-import { app, dataBase } from "./Firebase"
+import Main from "../pages/Main";
 import ContextProvider from "./ContextProvider"
 import { Carrito } from "./Carrito";
 import CartContext from "./CartContext";
+import { Compra } from "../pages/Compra";
 
 
 function App() {

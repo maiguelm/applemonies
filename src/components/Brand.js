@@ -1,5 +1,5 @@
 import React from "react";
-import imgLogo from "./img/lemonies.jpg";
+import imgLogo from "../img/lemonies.jpg";
 import { NavLink } from "react-router-dom"
 
 

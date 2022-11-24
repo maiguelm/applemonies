@@ -2,9 +2,9 @@ import { doc, getDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { dataBase } from './Firebase'
+import { dataBase } from '../store/Firebase'
 import ItemDetail from './ItemDetail'
-import { getProductsById } from "./Products"
+import { getProductsById } from "../store/Products"
 
 
 function ItemDetailContainer() {

@@ -3,9 +3,9 @@ import ItemCount from "./ItemCount";
 import { Button, Card, Container } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import { dataBase } from "./Firebase";
+import { dataBase } from "../store/Firebase";
 import { contexto, useCarrito } from "./ContextProvider";
-import { useContextProvider } from "./hooks/Hooks";
+import { useContextProvider } from "../hooks/Hooks";
 
 
 
@@ -15,6 +15,9 @@ function ItemDetail({producto}) {
 	const [confirmado, setConfirmado] = useState(false)
 	const [habilitado, setHabilitado] = useState(false)
 
+	const habilitar = () =>{
+		setHabilitado(false)
+	}
 
 	const handleOnAdd = (cantidad) => {
         console.log("Se agregaron " + cantidad + " productos")
@@ -46,7 +49,7 @@ function ItemDetail({producto}) {
 						</CardContent>
 					</div>
 					<div className="item__count">
-						<ItemCount init  handleOnAdd={handleOnAdd}/>
+						<ItemCount habilitar={habilitar}  handleOnAdd={handleOnAdd}/>
 						{confirmado && <button disabled = {habilitado} onClick={handleClick}>Agregar al Carrito</button> }
 
 					</div>
