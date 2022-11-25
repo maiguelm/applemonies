@@ -137,6 +137,11 @@ main{
     color: #1976d2
 }
 
+.titulo__error{
+    text-align: center; 
+    font-size: 2rem;
+    padding-top: 2rem;
+}
 
 /*------------------ESTILOS DEL CARRITO--------------*/
 .carritos{
@@ -262,4 +267,31 @@ main{
 .carrito__footer .btn:hover{
     background-color: #0f5c39;
     color: white;
+}
+
+/*------------------ESTILOS DEL CHECKOUT--------------*/
+
+.compra__check{
+    padding: 2.5rem;
+
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.item__Check{
+    min-width: 100%;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item__Check img{
+    max-height: 60px;
+    max-width: 60px;
+}
+
+.item__Check h3{
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1.2rem;
 }

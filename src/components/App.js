@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import Main from "../pages/Main";
 import ContextProvider from "./ContextProvider"
 import { Carrito } from "./Carrito";
-import CartContext from "./CartContext";
 import { Compra } from "../pages/Compra";
 
 

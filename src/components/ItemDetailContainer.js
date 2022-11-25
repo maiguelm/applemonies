@@ -21,7 +21,6 @@ function ItemDetailContainer() {
         const pedidoDB = getDoc(consProd)
         pedidoDB
           .then((res) => {
-              console.log("Funciona")
             setItems(res.data())
           })
           .catch((e) => {

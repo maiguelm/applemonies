@@ -71,7 +71,7 @@ export const Carrito = () => {
         <div className='carrito__center'>
 
           {
-            carrito.length === 0 ? <h2 style={{ textAlign: "center", fontSize: "2rem" }}>Carrito Vacio</h2> :
+            carrito.length === 0 ? <h2 className="titulo__error">Carrito Vacio</h2> :
               carrito.map((producto) => (<div key={producto.id}>
                 <div className='carrito__item'>
                   <img src={producto.imagen} alt={producto.nombre}></img>
@@ -89,7 +89,7 @@ export const Carrito = () => {
               ))
           }
           <div className='carrito__footer'>
-            {carrito.length === 0 ? <div></div> : <>
+            {carrito.length === 0 ? null : <>
             <h3>Total: $ {total}</h3>
             <NavLink
              to="./compra" onClick={menuFalse}> <IconButton color="primary" className='btn'>Comprar</IconButton></NavLink>

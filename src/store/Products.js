@@ -14,28 +14,27 @@ export let products = []
 const consultaDB = collection(dataBase, "products")
 console.log(consultaDB)
 
-// export const getProducts = () => {
-// 	// let arrayPetition = new Promise((res) => {
-// 	// 	setTimeout(() => {
-// 	// 		res(products)
-// 	// 	}, 500)
+export const getProducts = () => {
+	/* 	 let arrayPetition = new Promise((res) => {
+			 setTimeout(() => {
+				 res(products)
+			 }, 500)
+	
+		 })
+		 return arrayPetition */
 
-// 	// })
-// 	// return arrayPetition
 
+	const pedidoDB = getDocs(consultaDB)
+	pedidoDB
+		.then((res) => {
+			const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+			return prods
+		})
+		.catch((e) => {
+			console.log(e)
+		})
 
-// 	     const pedidoDB = getDocs(consultaDB)
-// 		pedidoDB
-// 		  .then((res) => {
-// 			const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-// 			products.push(prods)
-// 			return products
-// 		  })
-// 		  .catch((e) => {
-// 			console.log(e)
-// 		  }) 
-
-// }
+}
 
 export const getProductByCategory = (categoria) => {
 
@@ -60,18 +59,4 @@ export const getProductByCategory = (categoria) => {
 	// return arrayPetition
 }
 
-export const getProductsById = (id) => {
-	let arrayPetition = new Promise((res) => {
-		setTimeout(() => {
-			res(products.find(item => item.id == id))
-		}, 500)
-		console.log(products)
-	})
-	return arrayPetition
-}
 
-export default {
-	// getProducts,
-	getProductByCategory,
-	getProductsById
-}
