@@ -1,36 +1,22 @@
-import { Button } from '@mui/material'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { dataBase } from '../store/Firebase'
 import { useCarrito } from './ContextProvider'
 
 export const Form = () => {
 
-	const { register, formState: { errors }, watch, handleSubmit } = useForm();
+	const { register, formState: { errors }, handleSubmit, getValues } = useForm();
 	const { productos, total } = useCarrito()
 	const [nroOrden, setNroOrden] = useState(false)
 	const [id, setId] = useState("")
 
-	const refNombre = useRef()
-	const refMail = useRef()
-	const refMailDos = useRef()
-	const refCel = useRef()
 
-	const validacion = () => {
-		watch("mail", "maildos")
-		if ("mail" !== "maildos") {
-			console.log("mail distintos")
-		}
-	}
-	console.log(productos)
-
-	const onSubmit = (data) => {
+	const onSubmit = (data, e) => {
 
 		function getRandom() {
-			return Math.trunc(Math.random() * 10000);
+			return Math.trunc(Math.random() * 10000) * 100;
 		}
-
 		const pedido = {
 			usuario: {
 				nombre: data.nombre,
@@ -55,67 +41,63 @@ export const Form = () => {
 				console.log(error)
 				console.log("error")
 			})
+		e.target.reset();
 	}
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div>
-					<label>Nombre y Apellido</label>
-					<input
-						type="text"
-						{...register("nombre", {
-							required: true,
-							maxLength: 80
-						})}
-					/>
+					<input {...register("nombre", { required: true })}
+						placeholder='Nombre' />
 					{errors.nombre?.type === "required" && <p>ESTE CAMPO ES REQUERIDO</p>}
 				</div>
 				<div>
-					<label>Email</label>
-					<input
-						type="text"
-						{...register("mail", {
-							required: true,
-							pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-						})}
-					/>
+					<input {...register("apellido", { required: true })}
+						placeholder='Apellido' />
+					{errors.apellido?.type === "required" && <p>ESTE CAMPO ES REQUERIDO</p>}
+				</div>
+				<div>
+					<input {...register("mail", {
+						required: true,
+						pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+					})}
+						placeholder='Correo Electronico' />
 					{errors.mail?.type === "required" && <p>ESTE CAMPO ES REQUERIDO</p>}
 					{errors.mail?.type === "pattern" && <p>FORMATO INCORRECTO</p>}
 				</div>
 				<div>
-					<label>Confirme su Email</label>
-					<input
-						type="text"
-						{...register("maildos", {
-							required: true,
-							pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-							validate: validacion,
-						})}
-					/>
-					{errors.maildos?.type === "pattern" && <p>FORMATO INCORRECTO</p>}
-					{errors.maildos?.type === validacion() && <p>LOS MAILS NO COINCIDEN!!</p>}
+					<input {...register("confemail", {
+						required: true,
+						pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+						validate: (value) => value === getValues("mail")
+					})}
+						placeholder='Confirme su Correo Electronico' />
+					{errors.confemail?.type === "required" && <p>ESTE CAMPO ES REQUERIDO</p>}
+					{errors.confemail?.type === "pattern" && <p>FORMATO INCORRECTO</p>}
+					{errors.confemail?.type === "validate" && <p>LOS CORREOS NO COINCIDEN</p>}
 				</div>
 				<div>
-					<label>Telefono</label>
-					<input
-						type="tel"
-						{...register("telefono", {
-							required: true,
-							maxLength: 11,
-							minLength: 8
-						})}
-					/>
+					<input {...register("telefono", {
+						required: true,
+						maxLength: 11,
+						minLength: 8,
+						valueAsNumber: true
+					})}
+						placeholder='Celular' />
 					{errors.telefono?.type === "required" && <p>ESTE CAMPO ES REQUERIDO</p>}
 					{errors.telefono?.type === "maxLength" && <p>VERIFIQUE EL NUMERO INGRESADO</p>}
 					{errors.telefono?.type === "minLength" && <p>VERIFIQUE EL NUMERO INGRESADO</p>}
+					{errors.telefono === "valueAsNumber" && <p>VERIFIQUE EL NUMERO INGRESADO</p>}
 				</div>
-				<input type="submit" value="Confirmar Compra!" />
-			</form>
-				{id ? <h1>Orden generada con exito, su compra fue registrada con el número: {nroOrden}</h1> : null}
 
-			<div>
-			</div>
+				<input type="submit" />
+
+			</form>
+
+			{id ? <h1>Orden generada con exito, su compra fue registrada con el número: {nroOrden}</h1> : null}
+
+
 		</div>
 	)
 }
