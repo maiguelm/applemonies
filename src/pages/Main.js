@@ -9,6 +9,7 @@ import { Container } from "@mui/material";
 
 
 const Main = () => {
+
 	return (
 		<Container
 			sx={{ minHeight: "78vh" }} >
@@ -20,7 +21,7 @@ const Main = () => {
 
 					<Route path="/productos" element={<ItemListContainer greeting="Todos los productos" />} />
 
-					<Route path="/productos/:categoria" element={<ItemListContainer greeting="" />} />
+					<Route path="/productos/:categoria" element={<ItemListContainer />} />
 
 					<Route path="/item/:id" element={<ItemDetailContainer />} />
 

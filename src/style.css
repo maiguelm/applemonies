@@ -11,16 +11,18 @@
 }
 
 
-html, body{
+html,
+body {
     height: 100%;
 }
 
-#root{
+#root {
     display: flex;
     flex-direction: column;
 }
 
-header, footer {
+header,
+footer {
     background-color: rgb(187, 187, 0);
     max-height: 300px;
     display: flex;
@@ -30,52 +32,58 @@ header, footer {
     padding: 0.5rem 1rem;
     color: #1976d2;
 }
-main{
+
+main {
     padding: 0 3rem;
     text-align: center;
 }
 
-.icons__footer a{
+.icons__footer a {
     padding: 0 8px;
     color: #1976d2;
 }
 
-.icons__footer a{
+.icons__footer a {
     padding: 0 8px;
 }
 
-.linkNav{
-	padding: 10px;
+.linkNav {
+    padding: 10px;
     text-decoration: none;
 }
 
-.btnCarrito{
+.btnCarrito {
     padding: 35px;
 }
+
 .home {
     margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
-.home h1{
+
+.home h1 {
     font-size: 3rem;
     text-decoration: double;
     color: #1976d2;
 }
-.home img{
+
+.home img {
     max-width: 500px;
     margin: 0 auto;
 }
-.home p{
+
+.home p {
     margin-bottom: 2rem;
     padding: 1.5rem;
 }
 
 
-.products__main{
+.products__main {
     width: 100%;
 }
+
 .card__container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -83,42 +91,47 @@ main{
     text-align: center;
     padding: 2rem 1rem;
 }
-.card__div{
+
+.card__div {
     min-height: 400px;
     background-color: rgb(133, 227, 177);
     border: 1px solid;
     border-radius: 3px;
     box-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
+
 .card__img {
     margin: 1.5rem 0;
     max-width: 100%;
     max-height: 250px;
 }
 
-.card__button{
+.card__button {
     margin-bottom: 0.8rem !important;
 }
-.contenedor__detail{
+
+.contenedor__detail {
     padding: 1.5rem;
     display: flex;
     align-items: center;
-    background-color:rgb(133, 227, 177);
+    background-color: rgb(133, 227, 177);
 }
-.div__detail{
+
+.div__detail {
     margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
-.img__detail{
+
+.img__detail {
     padding: 2rem;
     margin: 0 auto;
     max-width: 300px;
     object-fit: cover;
 }
 
-.item__count{
+.item__count {
     margin-right: 2rem;
     display: flex;
     align-items: center;
@@ -126,25 +139,27 @@ main{
     border-radius: 3px;
     max-height: 5rem;
 }
-.counter__buttons{
+
+.counter__buttons {
     margin: 0 1rem;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
-.counter__buttons p{
+
+.counter__buttons p {
     font-size: 1.5rem;
     color: #1976d2
 }
 
-.titulo__error{
-    text-align: center; 
+.titulo__error {
+    text-align: center;
     font-size: 2rem;
     padding-top: 2rem;
 }
 
 /*------------------ESTILOS DEL CARRITO--------------*/
-.carritos{
+.carritos {
     position: fixed;
     top: 0;
     left: 0;
@@ -156,7 +171,8 @@ main{
     padding-bottom: 5rem;
     visibility: hidden;
 }
-.carrito{
+
+.carrito {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -168,36 +184,42 @@ main{
     overflow-x: scroll;
     transition: all 300ms ease-in-out;
     background-color: white;
-    opacity: 0; 
+    opacity: 0;
     visibility: hidden;
 }
-.carrito h2{
+
+.carrito h2 {
     text-align: center;
     font-size: 2rem;
 }
-.carritos.show{
+
+.carritos.show {
     visibility: visible;
 }
 
-.carrito.show{
+.carrito.show {
     transform: translate(-50%, -50%) scale(1.1);
     opacity: 1;
     visibility: visible;
 }
-.carrito__close{
+
+.carrito__close {
     display: inline-block;
     cursor: pointer;
     transform: all 300ms ease-in-out;
     margin: 3rem 0 0 2rem
 }
+
 .carrito__close:hover {
     fill: rgb(209, 204, 205);
 }
-.carrito__center{
+
+.carrito__center {
     width: 98%;
     margin: 0 auto;
 }
-.carrito__item{
+
+.carrito__item {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
@@ -207,56 +229,66 @@ main{
     box-shadow: 0 1px 10px saddlebrown;
     border-radius: 5px;
 }
-.carrito__item div{
+
+.carrito__item div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.carrito__item img{
+
+.carrito__item img {
     width: 10rem;
 }
-.carrito__item h3{
+
+.carrito__item h3 {
     margin-top: 1.5rem;
     text-align: center;
     font-family: Helvetica, sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
 }
-.carrito__item .precio__producto{
+
+.carrito__item .precio__producto {
     color: #1a202c;
     font-size: 1.2rem;
     font-weight: bold;
     text-align: start;
     margin: 0 auto;
- }
-.flechas__cantidad{
-    fill:#08a05c  !important;
+}
+
+.flechas__cantidad {
+    fill: #08a05c !important;
 
     cursor: pointer;
     margin-top: .3rem;
 }
-.carrito__item .cantidad__producto{
+
+.carrito__item .cantidad__producto {
     font-size: 1.2rem;
     font-weight: bold;
 }
-.delete__item{
+
+.delete__item {
     cursor: pointer;
     width: 60px;
     height: 80px;
-    fill:  crimson;
+    fill: crimson;
     margin-top: 2rem;
 }
-.carrito__footer{
+
+.carrito__footer {
     text-align: center;
     margin-bottom: 3rem;
 }
-.carrito__footer h3{
+
+.carrito__footer h3 {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;
     padding-bottom: 1rem;
 }
-.carrito__footer .btn{
+
+.carrito__footer .btn {
     display: inline-block;
     padding: .3rem 1rem;
     font-size: 1.2rem;
@@ -265,38 +297,51 @@ main{
     outline: 0;
     cursor: pointer;
 }
-.carrito__footer .btn:hover{
+
+.carrito__footer .btn:hover {
     background-color: #0f5c39;
     color: white;
 }
 
 /*------------------ESTILOS DEL CHECKOUT--------------*/
 
-.compra__check{
+.compra__check {
     padding: 2.5rem;
 
     display: flex;
     justify-content: space-evenly;
 
 }
-.item__Check{
+
+.item__Check {
     min-width: 100%;
     padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.item__Check img{
+
+.item__Check img {
     max-height: 60px;
     max-width: 60px;
 }
 
-.item__Check h3{
+.item__Check h3 {
     max-width: 200px;
     padding: 10px;
     font-size: 1.2rem;
 }
 
-.precio__productoCheck{
+.precio__productoCheck {
     padding: 10px;
+}
+
+/*-----------------------FORM-------------------*/
+.input__form {
+    padding: 10px;
+    width: 100%;
+}
+
+.input__form input {
+    width: 100%;
 }

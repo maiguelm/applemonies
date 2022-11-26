@@ -1,23 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { contexto, useCarrito } from './ContextProvider';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useContextProvider } from '../hooks/Hooks';
 
 
 export const Carrito = () => {
-
-  const value = useContext(contexto)
+  const value = useContextProvider()
   const [menu, setMenu] = value.menu
-  const [id, setId] = useState("")
-  const [carrito, setCarrito] = value.productos
-  const { borrarProducto, calculoPrecio, vaciarCarrito } = useCarrito()
-  const [total] = value.total
-  const [cantidadTotal, setCantidadTotal] = value.cantidadTotal
-
+  const carrito = value.productos
+  const { borrarProducto, calculoPrecio, vaciarCarrito, total, removerProducto, agregaProdUnidad } = useContextProvider()
 
   const menuFalse = () => {
     setMenu(false)
@@ -32,26 +27,12 @@ export const Carrito = () => {
   }
 
 
-  const remProd = id => {
-    carrito.forEach(item => {
-      if (item.id === id) {
-        item.cantidad === 1 ? item.cantidad = 1 : item.cantidad -= 1;
-        calculoPrecio(item, item.cantidad)
-        setCantidadTotal(cantidadTotal - 1)
-      }
-      setCarrito([...carrito])
-    })
+  const remProdByUnit = id => {
+    removerProducto(id)
   }
-  const addProd = id => {
-    carrito.forEach(item => {
-      if (item.id === id) {
-        item.cantidad += 1;
-        calculoPrecio(item, item.cantidad)
-        setCantidadTotal(cantidadTotal + 1)
-      }
-      setCarrito([...carrito])
 
-    })
+  const addProdByUnit = id => {
+    agregaProdUnidad(id)
   }
 
 
@@ -74,9 +55,9 @@ export const Carrito = () => {
                   <h3>{producto.nombre}</h3>
                   <p className='precio__producto'>$ {producto.precio}</p>
                   <div >
-                    <ArrowDropUpIcon fontSize="large" className='flechas__cantidad' onClick={() => addProd(producto.id)} />
+                    <ArrowDropUpIcon fontSize="large" className='flechas__cantidad' onClick={() => addProdByUnit(producto.id)} />
                     <p className='cantidad__producto'>{producto.cantidad}</p>
-                    <ArrowDropDownIcon fontSize="large" className='flechas__cantidad' onClick={() => remProd(producto.id)} />
+                    <ArrowDropDownIcon fontSize="large" className='flechas__cantidad' onClick={() => remProdByUnit(producto.id)} />
                   </div>
                   <div className='remove__item'>
                     <DeleteIcon className='delete__item' onClick={() => removeProducto(producto.id)} />
@@ -89,7 +70,7 @@ export const Carrito = () => {
               <h3>Total: $ {total}</h3>
               <NavLink
                 to="./compra" onClick={menuFalse}> <Button color="success" className='btn'>Comprar</Button></NavLink>
-              <Button color="success" className='btn' onClick={vaciarCarrito}>Vaciar Carrito</Button>
+              <NavLink to="./productos"><Button color="success" className='btn' onClick={vaciarCarrito}>Vaciar Carrito</Button></NavLink>
             </>
             }
 

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ItemCount from "./ItemCount";
-import { Card, Container } from "@mui/material";
+import { Button, Card, Container } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import { useCarrito } from "./ContextProvider";
+import { toast } from "react-toastify";
+import { useContextProvider } from "../hooks/Hooks";
 
 
 
 function ItemDetail({ producto }) {
 	const [cantidad, setCantidad] = useState(1)
-	const { agregarProducto } = useCarrito()
+	const { agregarProducto } = useContextProvider()
 	const [confirmado, setConfirmado] = useState(false)
 	const [habilitado, setHabilitado] = useState(false)
 
@@ -25,6 +26,7 @@ function ItemDetail({ producto }) {
 	const handleClick = () => {
 		agregarProducto(producto, cantidad)
 		setHabilitado(true)
+		toast.success("Producto agregado al carrito", {autoClose: 1500})
 	}
 
 	return (
@@ -35,7 +37,7 @@ function ItemDetail({ producto }) {
 						<div className="div__detail">
 							<h1>{producto.nombre}</h1>
 							<h2>$ {producto.precio}</h2>
-							<img src={producto.imagen} className="img__detail"></img>
+							<img src={producto.imagen} alt={producto.nombre} className="img__detail"></img>
 							<CardContent>
 								<Typography variant="body2" color="text.secondary">
 									{producto.descripcion}
@@ -44,7 +46,7 @@ function ItemDetail({ producto }) {
 						</div>
 						<div className="item__count">
 							<ItemCount habilitar={habilitar} handleOnAdd={handleOnAdd} />
-							{confirmado && <button disabled={habilitado} onClick={handleClick}>Agregar al Carrito</button>}
+							{confirmado && <Button disabled={habilitado} onClick={handleClick}>Agregar al Carrito</Button>}
 
 						</div>
 					</div>

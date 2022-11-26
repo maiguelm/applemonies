@@ -1,42 +1,24 @@
-import { doc, getDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { dataBase } from '../store/Firebase'
 import ItemDetail from './ItemDetail'
-import { getProductsById } from "../store/Products"
+import { getProductById } from "../store/Products"
+import { toast } from 'react-toastify'
 
 
 function ItemDetailContainer() {
-
   const [item, setItems] = useState({})
-
   const { id } = useParams()
 
   useEffect(() => {
-
-    const consultaDB = collection(dataBase, "products")
-    const consProd = doc(consultaDB, id)
-
-    const pedidoDB = getDoc(consProd)
-    pedidoDB
+    getProductById(id)
       .then((res) => {
         setItems(res.data())
       })
       .catch((e) => {
-        console.log(e)
+        toast.error(e)
       })
 
-
-
-    // getProductsById(id)
-    //     .then(res => {
-    //         setItems(res)
-    // 		console.log(res)
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
   }, [id])
 
   return (

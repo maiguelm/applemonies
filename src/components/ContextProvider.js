@@ -1,12 +1,6 @@
-import { createContext, useState, useContext, useEffect } from "react"
+import { createContext, useState, useEffect } from "react"
 export const contexto = createContext()
 const { Provider } = contexto
-
-
-
-export const useCarrito = () => {
-    return useContext(contexto)
-}
 
 
 const ContextProvider = ({ children }) => {
@@ -15,7 +9,6 @@ const ContextProvider = ({ children }) => {
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
     const [menu, setMenu] = useState(false)
-    const [count, setCount] = useState(1);
 
 
     useEffect(() => {
@@ -51,7 +44,6 @@ const ContextProvider = ({ children }) => {
         })
         setCarrito([...carrito])
         setCantidadTotal(carrito.length)
-
     }
 
     const agregarProducto = (producto, cantidad) => {
@@ -76,6 +68,29 @@ const ContextProvider = ({ children }) => {
         }
     }
 
+    const removerProducto = id => {
+        carrito.forEach(producto => {
+          if (producto.id === id) {
+            producto.cantidad === 1 ? producto.cantidad = 1 : producto.cantidad -= 1;
+            calculoPrecio(producto, producto.cantidad)
+            setCantidadTotal(cantidadTotal - 1)
+          }
+          setCarrito([...carrito])
+        })
+      }
+
+    const  agregaProdUnidad = id => {   
+        carrito.forEach(producto => {
+        if (producto.id === id) {
+          producto.cantidad += 1;
+          calculoPrecio(producto, producto.cantidad)
+          setCantidadTotal(cantidadTotal + 1)
+        }
+        setCarrito([...carrito])
+  
+      })
+    }
+
 
     const calculoPrecio = () => {
         const precioFinal = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0)
@@ -84,15 +99,15 @@ const ContextProvider = ({ children }) => {
 
 
     const valorDelContexto = {
-        productos: [carrito, setCarrito],
-        total: [total, setTotal],
-        cantidadTotal: [cantidadTotal, setCantidadTotal],
+        productos: carrito,
+        total: total,
+        menu: [menu, setMenu],
         vaciarCarrito: vaciarCarrito,
         agregarProducto: agregarProducto,
         borrarProducto: borrarProducto,
-        menu: [menu, setMenu],
         calculoPrecio: calculoPrecio,
-        count: [count, setCount]
+        removerProducto: removerProducto,
+        agregaProdUnidad: agregaProdUnidad
     }
 
     return (

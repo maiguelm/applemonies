@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { IconButton, Badge } from "@mui/material/";
-import { contexto, useCarrito } from "./ContextProvider";
+import { useContextProvider } from "../hooks/Hooks";
 
 
 const badgeStyle = {
@@ -15,16 +15,15 @@ const badgeStyle = {
 
 const CartWidget = () => {
 
-    const valorDelContexto = useContext(contexto)
-    const [carrito] = valorDelContexto.productos
-    const [menu, setMenu] = valorDelContexto.menu;
+    const value = useContextProvider()
+    const carrito = value.productos
+    const [menu, setMenu] = value.menu;
 
     const toogleMenu = () => {
         setMenu(!menu)
     }
 
     return (
-        /*         <Link to="./carrito"> */
         <IconButton sx={badgeStyle} onClick={toogleMenu}>
             <Badge anchorOrigin={{
                 vertical: 'bottom',
@@ -35,8 +34,6 @@ const CartWidget = () => {
                 <ShoppingCartIcon />
             </Badge>
         </IconButton>
-
-        /*         </Link> */
     )
 }
 

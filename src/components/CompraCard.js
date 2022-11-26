@@ -1,15 +1,13 @@
 import { Card, Container } from '@mui/material'
-import React, { useContext } from 'react'
-import { contexto } from './ContextProvider'
+import React from 'react'
+import { useContextProvider } from '../hooks/Hooks'
 
 
 
 function CompraCard() {
-
-	const value = useContext(contexto)
-	const [carrito] = value.productos
-	const [total] = value.total
-	const [cantidadTotal] = value.cantidadTotal
+	const value = useContextProvider()
+	const carrito = value.productos
+	const total = value.total
 
 
 	return (

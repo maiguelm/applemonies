@@ -1,53 +1,54 @@
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore"
+import { toast } from "react-toastify"
 import { dataBase } from "./Firebase"
 
 
 const consultaDB = collection(dataBase, "products")
-console.log(consultaDB)
 
 export const getProducts = () => {
-	/* 	 let arrayPetition = new Promise((res) => {
-			 setTimeout(() => {
-				 res(products)
-			 }, 500)
-	
-		 })
-		 return arrayPetition */
-
 
 	const pedidoDB = getDocs(consultaDB)
 	pedidoDB
 		.then((res) => {
-			const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-			return prods
+			res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+		
 		})
 		.catch((e) => {
-			console.log(e)
+			toast.error(e)
 		})
+	return pedidoDB
 
 }
 
 export const getProductByCategory = (categoria) => {
 
-	// const customQuery = query(consultaDB, where("categoria", "==", categoria))
+	const customQuery = query(consultaDB, where("categoria", "==", categoria))
+	const pedidoDB = getDocs(customQuery)
 
-	// const pedidoDB = getDocs(customQuery)
+	pedidoDB
+		.then((res) => {
+		res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+	})
+		.catch((e) => {
+			toast.error(e)
+		})
 
-	// pedidoDB.then((res)=>{
-	// 	const prods = res.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-	// 	products.push(prods)
-	// 	console.log(products)
-	//   })
-	//   .catch((e) => {
-	// 	console.log(e)
-	//   }) 
+	return pedidoDB
+}
 
-	// let arrayPetition = new Promise((res) => {
-	// 	setTimeout(() => {
-	// 		res(products.filter((item) => item.categoria == categoria))
-	// 	}, 1500)
-	// })
-	// return arrayPetition
+export const getProductById = (id) => {
+	const consProd = doc(consultaDB, id)
+	const pedidoDB = getDoc(consProd)
+   
+	pedidoDB
+      .then((res) => {
+		  res.data()
+      })
+      .catch((e) => {
+        toast.error(e)
+      })
+
+	  return pedidoDB
 }
 
 
