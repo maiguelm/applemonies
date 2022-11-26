@@ -14,7 +14,7 @@ const Item = ({ id, nombre, imagen, precio, categoria, }) => {
 					<h3>$ {precio}</h3>
 					<h4>{categoria}</h4>
 					<img src={imagen} alt={nombre} className="card__img" />
-					<Button variant="contained" className="card__button">
+					<Button variant="outlined" className="card__button">
 						<Link to={"/item/" + id}>Leer más</Link>
 					</Button>
 				</div >

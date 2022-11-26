@@ -2,6 +2,7 @@ import { Card, } from '@mui/material'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useContextProvider } from '../hooks/Hooks'
 import { dataBase } from '../store/Firebase'
@@ -101,6 +102,9 @@ export const Form = () => {
 			</Card>
 			<div>
 				{id ? <h1>Orden generada con exito, su compra fue registrada con el número: {nroOrden}</h1> : null}
+			</div>
+			<div>
+				{id ? <h3>Para seguir comprando haga click <NavLink to="../productos">aqui</NavLink></h3> : null}
 			</div>
 
 		</>

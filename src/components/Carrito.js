@@ -18,7 +18,7 @@ export const Carrito = () => {
     setMenu(false)
   }
 
-  const show = menu ? "carritos show" : "carritos"
+  const show = menu ? "carrito__padre show" : "carrito__padre"
   const show__dos = menu ? "carrito show" : "carrito"
 
   const removeProducto = id => {

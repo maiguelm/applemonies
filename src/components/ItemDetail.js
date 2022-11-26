@@ -26,7 +26,7 @@ function ItemDetail({ producto }) {
 	const handleClick = () => {
 		agregarProducto(producto, cantidad)
 		setHabilitado(true)
-		toast.success("Producto agregado al carrito", {autoClose: 1500})
+		toast.success("Producto agregado al carrito", { autoClose: 1500 })
 	}
 
 	return (
