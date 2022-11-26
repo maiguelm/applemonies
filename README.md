@@ -9,6 +9,10 @@ Profesor: Horacio Gutierrez
 Este es un proyecto desarrollado con ReactJS, a partir de creat-react-app. Es un e-commerce dedicado a la venta de productos de pastelería, en base a un emprendimiento realizado conjuntamente con mi esposa durante la Pandemia, por lo que mucho del contenido visual (imagenes) es real.
 La entrega forma parte del curso de ReactJS de Coderhouse, en mi caso, dentro de la carrera de Desarrollo Full Stack; carrera que estoy realizando desde julio de 2022 dada mi aspiracion de cambiar de profesion. Soy abogado en actividad, buscando nuevo horizontes.-
 
+Una pequeña muestra de la aplicacion:
+
+<img src="./aplicaciongif.gif" />
+
 ## Tecnologias utilizadas
 
 <img src="https://img.icons8.com/color/48/000000/html-5--v1.png"/> HTML5
@@ -18,6 +22,38 @@ La entrega forma parte del curso de ReactJS de Coderhouse, en mi caso, dentro de
 <img src="https://img.icons8.com/color/48/000000/npm.png"/> NPM
 <img src="https://img.icons8.com/ios/50/000000/visual-studio.png"/> VSC
 <img src="https://img.icons8.com/color/48/000000/firebase.png"/> Google Firebase
+
+Librerias: 
+        
+		"@emotion/react": "^11.10.4",
+		"@emotion/styled": "^11.10.4",
+        "@fontsource/roboto": "^4.5.8",
+        "@mui/icons-material": "^5.10.9",
+        "@mui/material": "^5.10.9",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "firebase": "^9.14.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.39.5",
+        "react-router-dom": "^6.4.2",
+        "react-scripts": "5.0.1",
+        "react-toastify": "^9.1.1",
+        "web-vitals": "^2.1.4"
+
+# Instalacion
+A los fines de poder utilizar esta aplicacion, lo primero que debe hacer es clonar el repositorio en su PC, luego acceder desde una consola al directorio donde ha clonado y ejecutar el npm start. Para lo cual, debe tener instalado npm(Node).-
+
+```
+	git clone https://github.com/maiguelm/applemonies
+
+	cd (a la carpeta pertinente)
+
+	npm start	
+```
+
+http://localhost:3000 para ver en el navegador.
 
 # Componentes
 
@@ -43,7 +79,8 @@ En caso que el carrito esté vacío, un mensaje así lo hará saber al usuario. 
 ### `Compra`
 Aquí se exhiben, a su vez, dos componentes: el CompraCard.js (que no es más que el resumen de la compra) y el formulario.
 Cabe aclarar que tanto en el carrito como en el resumen de la compra, el usuario podrá ver la cantidad de productos que compra y el precio total a abonar.-
-Respecto al formulario, se utilizó la librería React-Hooks_Form a los fines de realizar una simple validación de los campos.- 
+Respecto al formulario, se utilizó la librería React-Hooks-Form a los fines de realizar una simple validación de los campos.- 
+Enviado el formulario, se imprime en pantalla el número de orden del pedido, el cual es generado con el objeto Math de JS (ello, para no utilizar el ID del producto que genera automáticamente Firebase). Hay un pequeño Guf donde se muestra la carga en la base de datos.-
 
 ### `CardWidget`
 Aquí se representa el ícono del carrito. He decidido mostrar el número de productos en general que se compran y no la cantidad de items que se compran. Por ejemplo, si el usuario agrega al carrito dos Croissant y tres Alfajores, el CartWidget mostrará que hay dos productos en el carrito y no cinco. Me parece más realista.-
@@ -52,9 +89,12 @@ Aquí se representa el ícono del carrito. He decidido mostrar el número de pro
 ### `ContextProvider y Hooks`
 Estos dos componentes están intimamente relacionados. El primero maneja el contexto de toda la aplciacion y el segundo es un Hook particularmente creado para poder ser usado a lo largo de la aplicacion a fin de evitar la repeticion de código.-
 
-### Comentarios
+# Comentarios
 
 He dejado una carpeta con componentes y utilidades no utilizados, a los fines de ver cierta evolucion a lo largo del proyecto.-
 Se utilizó Material UI y CSS común para el poco maquetado realizado. Se puso más énfasis en la funcionalidad que en lo estético; lo cual intentaré corregir en el futuro.
 Todos los íconos utilizados son de dicha libreria. Asimismo, se utilizó la librería React-Tostify para dar algunos mensajes al usuario.-
 
+
+
+Linkedin: https://www.linkedin.com/in/miguel-angel-moyano/
