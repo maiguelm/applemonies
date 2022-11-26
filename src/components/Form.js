@@ -1,3 +1,4 @@
+import { Button, FormGroup } from '@mui/material'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -45,7 +46,7 @@ export const Form = () => {
 	}
 
 	return (
-		<div>
+		<FormGroup>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div>
 					<input {...register("nombre", { required: true })}
@@ -91,13 +92,13 @@ export const Form = () => {
 					{errors.telefono === "valueAsNumber" && <p>VERIFIQUE EL NUMERO INGRESADO</p>}
 				</div>
 
-				<input type="submit" />
+				<Button className="counter__buttons"><input type="submit" /></Button>
 
 			</form>
 
 			{id ? <h1>Orden generada con exito, su compra fue registrada con el número: {nroOrden}</h1> : null}
 
 
-		</div>
+		</FormGroup>
 	)
 }

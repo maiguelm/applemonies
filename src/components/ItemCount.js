@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useContextProvider } from "../hooks/Hooks";
 
 
-function ItemCount({handleOnAdd, habilitar}) {
+function ItemCount({ handleOnAdd, habilitar }) {
 	const contextValue = useContextProvider()
 
 	const [count, setCount] = useState(1)
@@ -14,13 +14,13 @@ function ItemCount({handleOnAdd, habilitar}) {
 	}
 
 	const handleLess = () => {
-		if (count > 1){
-		setCount(count - 1)
-		habilitar(false)
+		if (count > 1) {
+			setCount(count - 1)
+			habilitar(false)
 		}
 	}
 
-	const addCart = () =>{
+	const addCart = () => {
 		handleOnAdd(count)
 		habilitar(true)
 		console.log("Agregar al carrito")
@@ -29,9 +29,9 @@ function ItemCount({handleOnAdd, habilitar}) {
 	return (<>
 		<div>
 			<div className="counter__buttons">
-			<Button onClick={handleMore}>+</Button>
-			<p>{count}</p>
-			<Button onClick={handleLess}>-</Button>
+				<Button onClick={handleMore}>+</Button>
+				<p>{count}</p>
+				<Button onClick={handleLess}>-</Button>
 			</div>
 			<Button onClick={addCart}>Confirmá la Cantidad!!</Button>
 		</div>

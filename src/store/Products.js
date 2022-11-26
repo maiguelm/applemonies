@@ -1,14 +1,5 @@
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { dataBase } from "./Firebase"
-import productsArray from "../no-utilizados/productsArray.json"
-
-
-
-export let products = []
-
-// products = productsArray.map((item) => {
-// 	return item
-// })
 
 
 const consultaDB = collection(dataBase, "products")

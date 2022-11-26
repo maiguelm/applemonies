@@ -9,42 +9,42 @@ import { getProductsById } from "../store/Products"
 
 function ItemDetailContainer() {
 
-    const [item, setItems] = useState({})
+  const [item, setItems] = useState({})
 
-    const { id } = useParams()
+  const { id } = useParams()
 
-    useEffect(() => {
+  useEffect(() => {
 
-        const consultaDB = collection(dataBase, "products")
-        const consProd = doc(consultaDB, id)
+    const consultaDB = collection(dataBase, "products")
+    const consProd = doc(consultaDB, id)
 
-        const pedidoDB = getDoc(consProd)
-        pedidoDB
-          .then((res) => {
-            setItems(res.data())
-          })
-          .catch((e) => {
-            console.log(e)
-          })
-  
+    const pedidoDB = getDoc(consProd)
+    pedidoDB
+      .then((res) => {
+        setItems(res.data())
+      })
+      .catch((e) => {
+        console.log(e)
+      })
 
 
-        // getProductsById(id)
-        //     .then(res => {
-        //         setItems(res)
-		// 		console.log(res)
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-    }, [id])
 
-    return (
-        <>
-            <ItemDetail producto = {{id, ...item}} />
-        </>
+    // getProductsById(id)
+    //     .then(res => {
+    //         setItems(res)
+    // 		console.log(res)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+  }, [id])
 
-    )
+  return (
+    <>
+      <ItemDetail producto={{ id, ...item }} />
+    </>
+
+  )
 }
 
 export default ItemDetailContainer

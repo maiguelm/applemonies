@@ -9,7 +9,7 @@ function CompraCard() {
 	const value = useContext(contexto)
 	const [carrito] = value.productos
 	const [total] = value.total
-	const [cantidadTotal]= value.cantidadTotal
+	const [cantidadTotal] = value.cantidadTotal
 
 
 	return (
@@ -21,16 +21,16 @@ function CompraCard() {
 							<div className='item__Check'>
 								<img src={producto.imagen} alt={producto.nombre}></img>
 								<h3>{producto.nombre}</h3>
-								<p className='precio__producto'>Cantidad: {producto.cantidad}</p>
-								<p className='precio__producto'>$ {producto.cantidad * producto.precio}</p>
+								<p className='precio__productoCheck'>Cantidad: {producto.cantidad}</p>
+								<p className='precio__productoCheck'>$ {producto.cantidad * producto.precio}</p>
 
 							</div>
 						</div>
 					)
 					)}
-							<div>
-								<h2 className='precio__producto'>Total: $ {total} </h2>
-							</div>
+				<div>
+					<h2 className='precio__producto'>Total: $ {total} </h2>
+				</div>
 			</Card>
 		</Container>
 	)

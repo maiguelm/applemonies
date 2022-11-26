@@ -15,26 +15,26 @@ const ContextProvider = ({ children }) => {
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
     const [menu, setMenu] = useState(false)
-	const [count, setCount] = useState(1);
+    const [count, setCount] = useState(1);
 
 
-    useEffect (() =>{
+    useEffect(() => {
         const storageCarrito = JSON.parse(localStorage.getItem("carrito"))
         const storageCantidad = JSON.parse(localStorage.getItem("cantidad"))
         const storagePrecio = JSON.parse(localStorage.getItem("precioFinal"))
-        if(storageCarrito){
-          setCarrito(storageCarrito)
-          setCantidadTotal(storageCantidad)
-          setTotal(storagePrecio)
+        if (storageCarrito) {
+            setCarrito(storageCarrito)
+            setCantidadTotal(storageCantidad)
+            setTotal(storagePrecio)
         }
-      }, [])
+    }, [])
 
-    useEffect(() =>{
-        localStorage.setItem("carrito",JSON.stringify(carrito))
+    useEffect(() => {
+        localStorage.setItem("carrito", JSON.stringify(carrito))
         localStorage.setItem("cantidad", JSON.stringify(cantidadTotal))
         localStorage.setItem("precioFinal", JSON.stringify(total))
-      },[carrito])
-      
+    }, [carrito])
+
 
     const vaciarCarrito = () => {
         setCarrito([])
@@ -42,33 +42,31 @@ const ContextProvider = ({ children }) => {
         setCantidadTotal(0)
     }
 
-    const borrarProducto = id =>{
-		carrito.forEach((producto, index)=>{
-				if(producto.id === id){
-					producto.cantidad = 1;
-					carrito.splice(index, 1)
-				}
-			})
-			setCarrito([...carrito])
-            setCantidadTotal(carrito.length)
-      
-	}
+    const borrarProducto = id => {
+        carrito.forEach((producto, index) => {
+            if (producto.id === id) {
+                producto.cantidad = 1;
+                carrito.splice(index, 1)
+            }
+        })
+        setCarrito([...carrito])
+        setCantidadTotal(carrito.length)
+
+    }
 
     const agregarProducto = (producto, cantidad) => {
         const existe = carrito.find((productoCarrito) => productoCarrito.id === producto.id);
         if (existe) {
             setCarrito(carrito.map((productoCarrito) => {
                 if (productoCarrito.id === producto.id) {
-                    return { ...existe, cantidad: existe.cantidad + cantidad } 
+                    return { ...existe, cantidad: existe.cantidad + cantidad }
                 } else return productoCarrito
             }))
-            
+
             let suma = cantidad + cantidadTotal
             setCantidadTotal(suma)
             setTotal(total + producto.precio * cantidad)
-            console.log(suma)
         } else {
-            console.log("producto nuevo en el carrito!")
             setCarrito([
                 ...carrito,
                 { ...producto, cantidad }
@@ -77,25 +75,25 @@ const ContextProvider = ({ children }) => {
             setCantidadTotal(cantidadTotal + cantidad)
         }
     }
-  
 
-    const calculoPrecio = () =>{
-       const precioFinal = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0)
+
+    const calculoPrecio = () => {
+        const precioFinal = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0)
         setTotal(precioFinal)
     }
-    
+
 
     const valorDelContexto = {
         productos: [carrito, setCarrito],
         total: [total, setTotal],
-        cantidadTotal :[cantidadTotal, setCantidadTotal] ,
+        cantidadTotal: [cantidadTotal, setCantidadTotal],
         vaciarCarrito: vaciarCarrito,
         agregarProducto: agregarProducto,
         borrarProducto: borrarProducto,
         menu: [menu, setMenu],
         calculoPrecio: calculoPrecio,
         count: [count, setCount]
-     }
+    }
 
     return (
         <Provider value={valorDelContexto}>

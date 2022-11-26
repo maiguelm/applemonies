@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom"
 
 
 
-function Brand (){
+function Brand() {
 	return (
 		<NavLink to="/">
-		<img src={imgLogo} alt="logo de Lemonies" />
+			<img src={imgLogo} alt="logo de Lemonies" />
 		</NavLink>
 	)
 }

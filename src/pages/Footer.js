@@ -8,10 +8,10 @@ function Footer() {
 	return (<footer>
 		<p><CopyrightOutlinedIcon /> Todos los derechos reservados</p>
 		<p>Seguinos en nuestras redes</p>
-		<ul className="icons__footer"> 
-			<a href="#"><FacebookOutlinedIcon /></a>
-			<a href="#"><InstagramIcon /></a>
-			<a href="#"><TwitterIcon /></a>
+		<ul className="icons__footer">
+			<a href="https://www.facebook.com/"><FacebookOutlinedIcon /></a>
+			<a href="https://www.instagram.com/"><InstagramIcon /></a>
+			<a href="https://twitter.com/?lang=es"><TwitterIcon /></a>
 		</ul>
 	</footer>
 	)

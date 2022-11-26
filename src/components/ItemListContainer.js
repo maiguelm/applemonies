@@ -46,8 +46,8 @@ const ItemListContainer = ({ greeting }) => {
           console.log(e)
         })
 
-/*         getProducts().then((res) =>
-          setItems(res)) */
+      /*         getProducts().then((res) =>
+                setItems(res)) */
     }
 
   }, [categoria])

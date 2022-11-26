@@ -12,14 +12,14 @@ function App() {
 
 	return (
 		<>
-				<ContextProvider>
-					<BrowserRouter>
-						<Header />
-						<Main />
-						<Carrito />
-						<Footer />
-					</BrowserRouter>
-				</ContextProvider>
+			<ContextProvider>
+				<BrowserRouter>
+					<Header />
+					<Main />
+					<Carrito />
+					<Footer />
+				</BrowserRouter>
+			</ContextProvider>
 		</>
 	)
 }
