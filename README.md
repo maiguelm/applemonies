@@ -23,7 +23,7 @@ La entrega forma parte del curso de ReactJS de Coderhouse, en mi caso, dentro de
 
 ### `NavBar`
 
-A traves de la importacion del "<NavLink>" de React-Router-Dom, se logra la navegabilidad por el sitio. Se puede navegar a todos los productos como así tambien a las categorías; retornandose al Home desde el click al logo de la marca.-
+A traves de la importacion del `<NavLink>` de React-Router-Dom, se logra la navegabilidad por el sitio. Se puede navegar a todos los productos como así tambien a las categorías; retornandose al Home desde el click al logo de la marca.-
 El componente se renderiza cuando se carga la aplicación; no asi durante la navegacion por el sitio.-
 
 ### `ItemListContainer`
