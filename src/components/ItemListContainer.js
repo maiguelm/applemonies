@@ -35,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
   return (
     <div>
       <div>
-      {categoria ? <h2>{categoria}</h2> : <h2>{greeting}</h2>}
+        {categoria ? <h2>{categoria}</h2> : <h2>{greeting}</h2>}
       </div>
       <div>
         <ItemList items={items} />

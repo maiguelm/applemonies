@@ -21,7 +21,8 @@ function ItemCount({ handleOnAdd, habilitar }) {
 		habilitar(true)
 	}
 
-	return (<>
+	return (
+
 		<div>
 			<div className="counter__buttons">
 				<Button onClick={handleMore}>+</Button>
@@ -30,7 +31,7 @@ function ItemCount({ handleOnAdd, habilitar }) {
 			</div>
 			<Button onClick={addCart}>Confirmá la Cantidad!!</Button>
 		</div>
-	</>)
+	)
 }
 
 export default ItemCount

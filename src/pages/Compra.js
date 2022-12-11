@@ -5,14 +5,12 @@ import { Form } from '../components/Form';
 export const Compra = () => {
   return (
     <div className='compra__check'>
-      <>
-        <div>
-          <Form />
-        </div>
-        <div>
-          <CompraCard />
-        </div>
-      </>
+      <div>
+        <Form />
+      </div>
+      <div>
+        <CompraCard />
+      </div>
     </div>
   )
 }

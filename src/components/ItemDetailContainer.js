@@ -22,10 +22,7 @@ function ItemDetailContainer() {
   }, [id])
 
   return (
-    <>
       <ItemDetail producto={{ id, ...item }} />
-    </>
-
   )
 }
 

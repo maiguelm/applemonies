@@ -25,8 +25,6 @@ const Main = () => {
 
 					<Route path="/item/:id" element={<ItemDetailContainer />} />
 
-					<Route path='/carrito' element={<Carrito />} />
-
 					<Route path='/compra' element={<Compra />} />
 
 					<Route path='*' element={<h4>La página indicada no existe!</h4>} />

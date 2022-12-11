@@ -30,7 +30,6 @@ function ItemDetail({ producto }) {
 	}
 
 	return (
-		<>
 			<Container maxWidth="md">
 				<Card>
 					<div className="contenedor__detail">
@@ -51,9 +50,7 @@ function ItemDetail({ producto }) {
 						</div>
 					</div>
 				</Card>
-
 			</Container>
-		</>
 	)
 }
 

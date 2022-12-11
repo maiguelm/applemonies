@@ -11,7 +11,6 @@ import { ToastContainer } from 'react-toastify';
 function App() {
 
 	return (
-		<>
 			<ContextProvider>
 				<BrowserRouter>
 					<Header />
@@ -21,7 +20,6 @@ function App() {
 					<ToastContainer />
 				</BrowserRouter>
 			</ContextProvider>
-		</>
 	)
 }
 
